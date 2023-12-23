@@ -1,4 +1,4 @@
 export interface ISummedWorkTime {
   employeeName: string;
-  workDurationSummed: number;
+  workDurationSum: number;
 }

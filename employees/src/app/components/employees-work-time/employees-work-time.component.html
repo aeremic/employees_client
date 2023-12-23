@@ -1,11 +1,27 @@
 <div class="flex h-screen items-center">
     <div class="container m-auto w-auto">
         <div class="grid grid-cols-1 sm:grid-cols-2 sm:gap-6">
-            <app-work-time></app-work-time>
+            <ng-container *ngIf="(summedWorkTimes$ | async)?.length">
+                <table class="table-auto text-center">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Total Time In Month</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of summedWorkTimes$ | async">
+                            <td>{{item.employeeName}}</td>
+                            <td [ngClass]="{ 'bg-red-500 text-white' : item.workDurationSum < 360000000 }">
+                                {{item.workDurationSum | milisecondsToHours}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </ng-container>
             <div class="chart-container">
-                <canvas  id="MyChart" >{{ chart }}</canvas>
-          </div>
-          
+                <canvas id="workTimeSharedChart">{{ chart }}</canvas>
+            </div>
         </div>
     </div>
 </div>

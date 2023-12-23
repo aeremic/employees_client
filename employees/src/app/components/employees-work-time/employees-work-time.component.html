@@ -2,7 +2,10 @@
     <div class="container m-auto w-auto">
         <div class="grid grid-cols-1 sm:grid-cols-2 sm:gap-6">
             <app-work-time></app-work-time>
-            <!-- <app-time-entries></app-time-entries> -->
+            <div class="chart-container">
+                <canvas  id="MyChart" >{{ chart }}</canvas>
+          </div>
+          
         </div>
     </div>
 </div>
